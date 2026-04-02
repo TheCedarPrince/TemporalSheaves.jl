@@ -3,7 +3,13 @@ uuid = "18b264b9-e8a0-44aa-a543-ac2aaf56de86"
 authors = ["TheCedarPrince <jacobszelko@gmail.com> and contributors"]
 version = "0.0.1"
 
+[deps]
+Catlab = "134e5e36-593f-5add-ad60-77f754baafbe"
+
 [compat]
+Catlab = "0.17.5"
+ImageInTerminal = "0.5.4"
+PNGFiles = "0.4.4"
 julia = "1.10"
 
 [extras]
@@ -11,3 +17,10 @@ Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
 
 [targets]
 test = ["Test"]
+
+[weakdeps]
+ImageInTerminal = "d8c32880-2388-543b-8c61-d9f865259254"
+PNGFiles = "f57f5aa1-a3ce-4bc8-8ab9-96f992907883"
+
+[extensions]
+TemporalSheavesTerminalViewExt = ["ImageInTerminal", "PNGFiles"]
