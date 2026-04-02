@@ -5,11 +5,19 @@ version = "0.0.1"
 
 [deps]
 Catlab = "134e5e36-593f-5add-ad60-77f754baafbe"
+ImageIO = "82e4d734-157c-48bb-816b-45c225c6df19"
+
+[weakdeps]
+ImageIO = "82e4d734-157c-48bb-816b-45c225c6df19"
+Sixel = "45858cf5-a6b0-47a3-bbea-62219f50df47"
+
+[extensions]
+TemporalSheavesTerminalViewExt = ["Sixel", "ImageIO"]
 
 [compat]
-Catlab = "0.17.5"
-ImageInTerminal = "0.5.4"
-PNGFiles = "0.4.4"
+Catlab = "0.17"
+ImageIO = "0.6.9"
+Sixel = "0.1.5"
 julia = "1.10"
 
 [extras]
@@ -17,10 +25,3 @@ Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
 
 [targets]
 test = ["Test"]
-
-[weakdeps]
-ImageInTerminal = "d8c32880-2388-543b-8c61-d9f865259254"
-PNGFiles = "f57f5aa1-a3ce-4bc8-8ab9-96f992907883"
-
-[extensions]
-TemporalSheavesTerminalViewExt = ["ImageInTerminal", "PNGFiles"]
