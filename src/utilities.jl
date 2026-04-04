@@ -11,6 +11,5 @@ function _extension_message(pkg, fn, io)
     printstyled(io, "Pkg.add(\"$pkg\")\n", color = :light_blue, bold = true)
     printstyled(io, "using $pkg\n", color = :light_blue, bold = true)
 
-    println(io, "\n\nin your REPL or code.")
+    return println(io, "\n\nin your REPL or code.")
 end
-
