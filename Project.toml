@@ -5,18 +5,20 @@ version = "0.0.1"
 
 [deps]
 Catlab = "134e5e36-593f-5add-ad60-77f754baafbe"
-ImageIO = "82e4d734-157c-48bb-816b-45c225c6df19"
 
 [weakdeps]
-ImageIO = "82e4d734-157c-48bb-816b-45c225c6df19"
+FileIO = "5789e2e9-d7fb-5bc7-8068-2c6fae9b9549"
+HypertextLiteral = "ac1192a8-f4b3-4bfe-ba22-af5b92cd3ab2"
 Sixel = "45858cf5-a6b0-47a3-bbea-62219f50df47"
 
 [extensions]
-TemporalSheavesTerminalViewExt = ["Sixel", "ImageIO"]
+TemporalSheavesHypertextExt = ["HypertextLiteral"]
+TemporalSheavesTerminalViewExt = ["Sixel", "FileIO"]
 
 [compat]
 Catlab = "0.17"
-ImageIO = "0.6.9"
+FileIO = "1.18"
+HypertextLiteral = "1"
 Sixel = "0.1.5"
 julia = "1.10"
 
