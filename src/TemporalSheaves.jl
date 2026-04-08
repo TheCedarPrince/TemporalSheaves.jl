@@ -1,9 +1,7 @@
 module TemporalSheaves
 
-using Base:
-    get_extension
-using Base.Experimental:
-    register_error_hint
+using Base: get_extension
+using Base.Experimental: register_error_hint
 using Catlab
 
 function __init__()
