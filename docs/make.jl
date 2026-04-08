@@ -1,5 +1,8 @@
 using TemporalSheaves
 using Documenter
+using Revise
+
+Revise.revise()
 
 DocMeta.setdocmeta!(TemporalSheaves, :DocTestSetup, :(using TemporalSheaves); recursive=true)
 
@@ -14,6 +17,7 @@ makedocs(;
     ),
     pages=[
         "Home" => "index.md",
+        "Tutorials" => "tutorials.md"
     ],
 )
 

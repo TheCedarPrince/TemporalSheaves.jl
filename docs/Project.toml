@@ -1,3 +1,7 @@
 [deps]
+Catlab = "134e5e36-593f-5add-ad60-77f754baafbe"
 Documenter = "e30172f5-a6a5-5a46-863b-614d45cd2de4"
+HypertextLiteral = "ac1192a8-f4b3-4bfe-ba22-af5b92cd3ab2"
+LiveServer = "16fef848-5104-11e9-1b77-fb7a48bbb589"
+Revise = "295af30f-e4ad-537b-8983-00126c2a3abe"
 TemporalSheaves = "18b264b9-e8a0-44aa-a543-ac2aaf56de86"
