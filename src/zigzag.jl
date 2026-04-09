@@ -17,7 +17,7 @@ Generates a discrete representation of the discrete subunit interval category (r
 
 - `cons::DataType` - an ACSet `DataType` that represents the constructor built by `@acset_type`
 
-# Example
+# Examples
 
 Create a ZigZag with 2 time points:
 
@@ -94,7 +94,7 @@ Generates a discrete representation of the discrete subunit interval category (r
 
 - `cons::DataType` - an ACSet `DataType` that represents the constructor built by `@acset_type`
 
-# Example
+# Examples
 
 Create a ZigZag with 2 time points:
 
@@ -218,7 +218,7 @@ Get time points associated to a given ZigZag schema.
 
 - Vector of `Ob{:generator}` objects 
 
-# Example 
+# Examples 
 
 ```julia-repl
 julia> s, c = zigzag(2);
@@ -262,7 +262,7 @@ Computes the subobjects associated to a ZigZag and interprets them as graph embe
 
 - Vector of subobjects as graph embeddings (specifically, `NamedGraph`'s).
 
-# Example 
+# Examples 
 
 Compute the subobjects on the ZigZag schema
 

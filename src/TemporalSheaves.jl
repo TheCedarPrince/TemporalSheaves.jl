@@ -1,3 +1,6 @@
+"""
+Package to work with temporal sheaves and associate them to data sources for computational applications of temporal sheaf theory.
+"""
 module TemporalSheaves
 
 using Base: get_extension

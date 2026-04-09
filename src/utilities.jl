@@ -1,3 +1,24 @@
+"""
+    _extension_message(pkg, fn, io)
+
+Prints a styled message to `io` instructing the user to install and load a required package.
+
+# Arguments
+
+- `pkg` - name of the package that needs to be loaded
+- `fn` - name of the function that requires `pkg`
+- `io` - the `IO` stream to print the message to
+
+# Returns
+
+- `nothing` (prints to `io` as a side effect)
+
+# Examples
+
+```julia-repl
+julia> _extension_message("Graphs", "my_function", stdout)
+```
+"""
 function _extension_message(pkg, fn, io)
     print(io, "\n\nPlease load the ")
     printstyled(io, "$pkg", color = :green, bold = true)
