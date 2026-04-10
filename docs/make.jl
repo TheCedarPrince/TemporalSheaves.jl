@@ -1,6 +1,10 @@
-using TemporalSheaves
 using Documenter
 using DocumenterVitepress
+
+using TemporalSheaves
+using Sixel
+using ImageIO
+using HypertextLiteral
 
 ext1 = Base.get_extension(TemporalSheaves, :TemporalSheavesHypertextExt)
 ext2 = Base.get_extension(TemporalSheaves, :TemporalSheavesTerminalViewExt)
