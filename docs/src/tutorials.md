@@ -8,9 +8,9 @@ using HypertextLiteral
 using TemporalSheaves
 ```
 
-# Tutorials 
+# [Tutorials](@id tutorials)
 
-## The Category of Discrete Sub-Unit Intervals, $\mathbf{Z}$
+## [The Category of Discrete Sub-Unit Intervals, $\mathbf{Z}$](@id zigzag-category)
 
 **Definition:** Let $(\mathbf{Z},\subseteq)$ be the induced subposet of $(\mathbf{I}_{\mathbb{Z}},\subseteq)$ spanned by intervals of length at most one.
 More concretely, $\mathbf{Z}$ is the posetal category consisting of:
@@ -25,9 +25,9 @@ We call $\mathbf{Z}$ the **category of discrete subunit-intervals**.
 While the precise name of this category is the category of discrete subunit-intervals, letter $\mathbf{Z}$ was chose to be reminiscent of $\mathbb{Z}$ as well as to evoke the zigzag shape of this category.
 For that reason, in `TemporalSheaves.jl` and across the literature here, this category is also affectionately referred to as the $\mathbf{ZigZag}$ category as a shorthand and to emphasize how we are using the shape of this category for our computational applications.
 
-## Examples Using the $\mathbf{ZigZag}$ Category, $\mathbf{Z}$
+## [Examples Using the $\mathbf{ZigZag}$ Category, $\mathbf{Z}$](@id zigzag-examples)
 
-### Computing $\mathbf{Z}$ and $\mathbf{Z^{op}}$ on $2$ Time Points
+### [Computing $\mathbf{Z}$ and $\mathbf{Z^{op}}$ on $2$ Time Points](@id zigzag-computing)
 
 Underlying `TemporalSheaves.jl` is the `SchZigZag` Presentation based on `Catlab.jl`'s `FreeSchema` and the abstract acset type, `AbstractZigZag`.
 These foundational abstractions allow flexibility in defining methods based on a zigzag schema category with finite number of time points.
@@ -68,7 +68,7 @@ Which yields, reversed homomorphisms for this category:
 to_graphviz(schema, graph_attrs=Dict(:dpi => "70"), prog = "circo")
 ```
 
-### Working with Subobjects of $\mathbf{Z^{op}}$
+### [Working with Subobjects of $\mathbf{Z^{op}}$](@id zigzag-subobjects)
 
 To view the subobjects of this category, one can use `Catlab.jl`'s `subobject_classifier` method on the `constructor` object.
 However, the resulting subobjects are not immediately convenient to visualize or read so `TemporalSheaves.jl` provides the following method:
@@ -90,12 +90,6 @@ Furthermore, we can view these subobjects with the following method:
 to_graphviz_htl(subobs, style = "", node_labels = true, edge_labels = true)
 ```
 
-> Note: for visualization convenience beyond `Catlab.jl`'s `to_graphviz` method, `TemporalSheaves.jl` provides the following methods:
-> 
-> ``````@docs
-> to_graphviz_htl
-> display_in_repl
-> ``````
 
 Furthermore, using these subobject embeddings, one can readily perform propositional logic operations with them such as follows:
 
@@ -112,9 +106,9 @@ to_graphviz_htl([B, A, C], node_labels = true, edge_labels = true)
 
 You can read the output as $B \implies A$ giving $C$.
 
-## Adding Data To $\mathbf{Z}$ Finite Structures
+## [Adding Data To $\mathbf{Z}$ Finite Structures](@id zigzag-data)
 
-### Preparing $\mathbf{Z^{op}}$ across $2$ Time Points
+### [Preparing $\mathbf{Z^{op}}$ across $2$ Time Points](@id zigzag-preparing-data)
 
 To add data to the objects of a zigzag schema category we construct, we proceed in a very similar way with the non-attributed case.
 However, this time, we start with the following method:
@@ -130,7 +124,7 @@ schema, constructor = zigzag!(2);
 nothing # hide
 ```
 
-### Attributed $\mathbf{Z^{op}}$-$\mathbf{Set}$ on $2$ Time Points
+### [Attributed $\mathbf{Z^{op}}$-$\mathbf{Set}$ on $2$ Time Points](@id zigzag-attributed)
 
 Before continuing, let's examine the new graph of this schema:
 
@@ -169,11 +163,11 @@ Moreover, the `state` object has been added so as to record the potential states
 The `state_label` `Attr` associates a given state to labels provided at an instance of this `Presentation`.
 The addition of these features to this schema is motivated by applications (see section on applications) and allow full exploitation of the categorical machinery provided by `Catlab.jl` on such zigzag categories.
 
-## Computational Applications of $\mathbf{Z^{op}}$-$\mathbf{Set}$
+## [Computational Applications of $\mathbf{Z^{op}}$-$\mathbf{Set}$](@id zop-set-applications)
 
 To better understand how to use these features, we provide a few examples 
 
-### Example: Temporal Paths of Flu Transmission
+### [Example: Temporal Paths of Flu Transmission](@id flu-transmission)
 
 Here, we use the zigzag schema associated to $2$ time points to define flu cases.
 
@@ -297,3 +291,13 @@ end
 
 temporal_path(longer_flu_transmission, schema, "Sanna")
 ```
+
+## [Tips and Tricks](@id tips-tricks)
+
+For visualization convenience beyond `Catlab.jl`'s `to_graphviz` method, `TemporalSheaves.jl` provides the following methods:
+
+```@docs
+to_graphviz_htl
+display_in_repl
+```
+
