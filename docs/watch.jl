@@ -1,10 +1,6 @@
 # docs/watch.jl
 # Run from repo root: julia --project=docs docs/watch.jl
 
-using Pkg
-Pkg.develop(PackageSpec(path = pwd()))
-Pkg.instantiate()
-
 using LiveServer
 using FileWatching
 
