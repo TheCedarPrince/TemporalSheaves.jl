@@ -5,7 +5,7 @@
 An early goal that manifested from the efforts undertaken in exploring temporal sheaves is the tracking of disease transmission.
 Specifically, the timing by which individuals infect one another.
 
-> Note: The origins of this particular sketch is indebted to Nate Osgood, Nelson Niu, and Priyaa Varshinee Srinivasan! 😄
+> Note: The origins of this particular sketch is indebted to Nate Osgood, Nelson Niu, Juxin Liu, and Priyaa Varshinee Srinivasan! 😄
 
 ### Zigzag Category with Temporal Sets
 
@@ -146,3 +146,91 @@ Some areas on where to expand this to are to investigate questions such as:
 And there are several more.
 Moreover, what has been absent discussion is the fact of conducting additional analysis on the categorical structure scaffolding the temporal sets themselves.
 Conducting actual investigations on hom-sets, for example, could yield completely novel new ways to investigate the temporal dynamics of a disease spread through the lens of a "compositional public health" approach where public health methods are grounded in categorical machinery.
+
+## Treatment Patterns 
+
+Treatment pattern analysis is an emerging concept across health informatics (particularly in the context of retrospective and observational health settings involving patients) that looks at a patient's continuum of care.
+For a given patient population, the goal is to find the treatment pathway consisting of selected "treatments of interest" (i.e. event cohorts). 
+These treatments of interest (or events) can be drug prescribing, other therapies, procedures, or measurements. 
+The treatment pathway are such sequences of events over time. [markus2022treatmentpatterns](@cite)
+
+> Note: This idea is less developed; I wanted to draft the idea as a sketch so I could later return to it.
+
+### Scenario: Event Relationships in an Emergency Operation
+
+A patient encounter with a care provider (such as a hospital, outpatient clinic, walk-in clinic, etc.) presents a panoply of data around just that one patient visit.
+A way to temporally view this is as follows:
+
+
+```@raw html
+<div style="width: 100%; max-width: 1200px; overflow: hidden;">
+  <div style="transform: scale(0.5); transform-origin: top left; width: 200%; pointer-events: auto;">
+  <!-- https://q.uiver.app/#q=WzAsMTksWzEsNSwiRihbaF57dCwgdCArIDF9XSkiLFswLDYwLDQwLDFdXSxbMiw1LCJGKFtoXnt0ICsgMX1dKSIsWzAsNjAsNDAsMV1dLFsyLDYsIlRfe3QgKyAxfSIsWzAsNjAsNDAsMV1dLFsxLDYsIlRfe3QsIHQgKyAxfSIsWzAsNjAsNDAsMV1dLFswLDYsIlRfe3R9IixbMCw2MCw0MCwxXV0sWzAsNSwiRihbaF57dH1dKSIsWzAsNjAsNDAsMV1dLFsyLDQsIlRfe3R9IixbMTIwLDYwLDMwLDFdXSxbMyw0LCJUX3t0LCB0ICsgMX0iLFsxMjAsNjAsMzAsMV1dLFs0LDQsIlRfe3QgKyAxfSIsWzEyMCw2MCwzMCwxXV0sWzIsMywiRihbaF57dH1dKSIsWzEyMCw2MCwzMCwxXV0sWzMsMywiRihbaF57dCwgdCArIDF9XSkiLFsxMjAsNjAsMzAsMV1dLFs0LDMsIkYoW2hee3QgKyAxfV0pIixbMTIwLDYwLDMwLDFdXSxbNCwyLCJUX3t0fSIsWzI0MCw2MCw0MCwxXV0sWzUsMiwiVF97dCwgdCArIDF9IixbMjQwLDYwLDQwLDFdXSxbNiwyLCJUX3t0ICsgMX0iLFsyNDAsNjAsNDAsMV1dLFs0LDEsIkYoW2hee3R9XSkiLFsyNDAsNjAsNDAsMV1dLFs1LDEsIkYoW2hee3QsIHQgKyAxfV0pIixbMjQwLDYwLDQwLDFdXSxbNiwxLCJGKFtoXnt0ICsgMX1dKSIsWzI0MCw2MCw0MCwxXV0sWzYsMCwiXFxjZG90cyJdLFsxNiwxNSwiIiwwLHsiY29sb3VyIjpbMjQwLDYwLDQwXX1dLFsxNiwxNywiIiwyLHsiY29sb3VyIjpbMjQwLDYwLDQwXX1dLFsxMywxMiwiIiwyLHsiY29sb3VyIjpbMjQwLDYwLDQwXX1dLFsxMywxNCwiIiwwLHsiY29sb3VyIjpbMjQwLDYwLDQwXX1dLFsxMCw5LCIiLDAseyJjb2xvdXIiOlsxMjAsNjAsMzBdfV0sWzEwLDExLCIiLDIseyJjb2xvdXIiOlsxMjAsNjAsMzBdfV0sWzcsNiwiIiwyLHsiY29sb3VyIjpbMTIwLDYwLDMwXX1dLFswLDUsIiIsMCx7ImNvbG91ciI6WzAsNjAsNDBdfV0sWzAsMSwiIiwyLHsiY29sb3VyIjpbMCw2MCw0MF19XSxbMyw0LCIiLDIseyJjb2xvdXIiOlswLDYwLDQwXX1dLFszLDIsIiIsMCx7ImNvbG91ciI6WzAsNjAsNDBdfV0sWzAsMywiIiwxLHsiY29sb3VyIjpbMCw2MCw0MF0sInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzEsMiwiIiwyLHsiY29sb3VyIjpbMCw2MCw0MF0sInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzYsOSwiIiwyLHsiY29sb3VyIjpbMTIwLDYwLDMwXSwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNywxMCwiIiwxLHsiY29sb3VyIjpbMTIwLDYwLDMwXSwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbOCwxMSwiIiwwLHsiY29sb3VyIjpbMTIwLDYwLDMwXSwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMTIsMTUsIiIsMix7ImNvbG91ciI6WzI0MCw2MCw0MF0sInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzEzLDE2LCIiLDEseyJjb2xvdXIiOlsyNDAsNjAsNDBdLCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsxNCwxNywiIiwwLHsiY29sb3VyIjpbMjQwLDYwLDQwXSwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMCwxMF0sWzEwLDE2XSxbNyw4LCIiLDAseyJjb2xvdXIiOlsxMjAsNjAsMzBdfV0sWzUsNCwiIiwwLHsiY29sb3VyIjpbMCw2MCw0MF0sInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzE2LDE4XV0= -->
+<iframe class="quiver-embed" src="https://q.uiver.app/#q=WzAsMTksWzEsNSwiRihbaF57dCwgdCArIDF9XSkiLFswLDYwLDQwLDFdXSxbMiw1LCJGKFtoXnt0ICsgMX1dKSIsWzAsNjAsNDAsMV1dLFsyLDYsIlRfe3QgKyAxfSIsWzAsNjAsNDAsMV1dLFsxLDYsIlRfe3QsIHQgKyAxfSIsWzAsNjAsNDAsMV1dLFswLDYsIlRfe3R9IixbMCw2MCw0MCwxXV0sWzAsNSwiRihbaF57dH1dKSIsWzAsNjAsNDAsMV1dLFsyLDQsIlRfe3R9IixbMTIwLDYwLDMwLDFdXSxbMyw0LCJUX3t0LCB0ICsgMX0iLFsxMjAsNjAsMzAsMV1dLFs0LDQsIlRfe3QgKyAxfSIsWzEyMCw2MCwzMCwxXV0sWzIsMywiRihbaF57dH1dKSIsWzEyMCw2MCwzMCwxXV0sWzMsMywiRihbaF57dCwgdCArIDF9XSkiLFsxMjAsNjAsMzAsMV1dLFs0LDMsIkYoW2hee3QgKyAxfV0pIixbMTIwLDYwLDMwLDFdXSxbNCwyLCJUX3t0fSIsWzI0MCw2MCw0MCwxXV0sWzUsMiwiVF97dCwgdCArIDF9IixbMjQwLDYwLDQwLDFdXSxbNiwyLCJUX3t0ICsgMX0iLFsyNDAsNjAsNDAsMV1dLFs0LDEsIkYoW2hee3R9XSkiLFsyNDAsNjAsNDAsMV1dLFs1LDEsIkYoW2hee3QsIHQgKyAxfV0pIixbMjQwLDYwLDQwLDFdXSxbNiwxLCJGKFtoXnt0ICsgMX1dKSIsWzI0MCw2MCw0MCwxXV0sWzYsMCwiXFxjZG90cyJdLFsxNiwxNSwiIiwwLHsiY29sb3VyIjpbMjQwLDYwLDQwXX1dLFsxNiwxNywiIiwyLHsiY29sb3VyIjpbMjQwLDYwLDQwXX1dLFsxMywxMiwiIiwyLHsiY29sb3VyIjpbMjQwLDYwLDQwXX1dLFsxMywxNCwiIiwwLHsiY29sb3VyIjpbMjQwLDYwLDQwXX1dLFsxMCw5LCIiLDAseyJjb2xvdXIiOlsxMjAsNjAsMzBdfV0sWzEwLDExLCIiLDIseyJjb2xvdXIiOlsxMjAsNjAsMzBdfV0sWzcsNiwiIiwyLHsiY29sb3VyIjpbMTIwLDYwLDMwXX1dLFswLDUsIiIsMCx7ImNvbG91ciI6WzAsNjAsNDBdfV0sWzAsMSwiIiwyLHsiY29sb3VyIjpbMCw2MCw0MF19XSxbMyw0LCIiLDIseyJjb2xvdXIiOlswLDYwLDQwXX1dLFszLDIsIiIsMCx7ImNvbG91ciI6WzAsNjAsNDBdfV0sWzAsMywiIiwxLHsiY29sb3VyIjpbMCw2MCw0MF0sInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzEsMiwiIiwyLHsiY29sb3VyIjpbMCw2MCw0MF0sInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzYsOSwiIiwyLHsiY29sb3VyIjpbMTIwLDYwLDMwXSwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbNywxMCwiIiwxLHsiY29sb3VyIjpbMTIwLDYwLDMwXSwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbOCwxMSwiIiwwLHsiY29sb3VyIjpbMTIwLDYwLDMwXSwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMTIsMTUsIiIsMix7ImNvbG91ciI6WzI0MCw2MCw0MF0sInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzEzLDE2LCIiLDEseyJjb2xvdXIiOlsyNDAsNjAsNDBdLCJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifSwiaGVhZCI6eyJuYW1lIjoibm9uZSJ9fX1dLFsxNCwxNywiIiwwLHsiY29sb3VyIjpbMjQwLDYwLDQwXSwic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn0sImhlYWQiOnsibmFtZSI6Im5vbmUifX19XSxbMCwxMF0sWzEwLDE2XSxbNyw4LCIiLDAseyJjb2xvdXIiOlsxMjAsNjAsMzBdfV0sWzUsNCwiIiwwLHsiY29sb3VyIjpbMCw2MCw0MF0sInN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9LCJoZWFkIjp7Im5hbWUiOiJub25lIn19fV0sWzE2LDE4XV0=&embed" width="1364" height="944" style="border-radius: 8px; border: none;"></iframe>
+  </div>
+</div>
+```
+
+Each of these Zigzag categories of only two time points represents one patient across three different perspectives being:
+
+- **Visit Occurrence (Red):** where persons engage with the healthcare system for a duration of time.
+
+- **Condition Occurrence (Green):** the presence of a disease or medical condition stated as a diagnosis, a sign, or a symptom, which is either observed by a Provider or reported by the patient.
+
+- **Drug Exposure (Blue):** exposure to a drug ingested or otherwise introduced into the body.
+
+
+To further explain this example, the zigzags record a sequence of events for one individual patient.
+Each zigzag is equipped with temporal sets associated to what is being tracked with the red zigzag contains visit information, the green zigzag contains condition diagnosis information, and the blue zigzag contains prescription information.
+The black arrow does not mean anything but to provide a sense of depth to the figure as you can imagine the three zigzags occuring in parallel
+
+As an example, this individual patient could be someone who has a medical emergency requiring surgery.
+A flow could be:
+
+- At $t_{0}$:
+
+  - The patient visits the emergency department
+
+  - The patient is diagnosed with a condition requiring immediate surgical attention
+
+  - The patient is then prescribed anti-inflammatory medications and painkillers for recovery
+
+- At $t_{1}$:
+
+  - The patient is moved into recovery
+
+  - The patient is re-assessed and receives another diagnosis 
+
+  - The patient no longer needs painkillers and is moved to maintenance medication 
+
+- This continues until the patient is discharged 
+
+Implicit in this example is a preorder that can exist between the elements of the zigzags being something like:
+
+$$Visit Occurrence < Condition Occurrence < Drug Exposure$$
+
+While the zigzags here are denoted as having the same number of discrete time points, this approach does not mean in reality, they occur at the exact same time.
+Instead, the zigzag structure endows the relationships across and within the zigzag to have temporally the "same" sequence but the timings can be related across one another agnostic of the actual timing of the event.
+
+> Note: The definitions provided above come from within observational health research settings and reflect general perspectives across health informatics [omop_cdm_github](@cite).
+
+### Where This Can Be Applied 
+
+Some general ideas about where this could be applied are:
+
+- Overprescription of opioids affecting vulnerable populations
+
+- Principled understanding of prescription cascades in geriatric populations
+
+- End-to-end understanding care pathways for a given disease
+
+The current way to address these questions and concerns are often laborious and ad hoc methods.
+Moreover, given the lack of structure with much clinical data, the zigzag structure provides one of the most advantageous and generalized approaches to recording temporal data.
+
+
+```@bibliography
+Pages = ["temporal_paths.md"]
+Canonical = false
+```
+
+
