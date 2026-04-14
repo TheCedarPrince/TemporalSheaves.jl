@@ -23,7 +23,7 @@ hero:
 ---
 ```
 
-`TemporalSheaves.jl` is a Julia package to consider sheaf theory through the lens of changes over time.
+`TemporalSheaves.jl` is a Julia package to consider sheaf theory through the lens of changes over time [bumpus2026towards](@cite).
 In particular, `TemporalSheaves.jl` is designed to support working with temporal sheaves, track information across time points, and supports discrete and cumulative changes over time.
 
 To install (while in development), execute the following in your Julia REPL:
@@ -54,3 +54,10 @@ and then you can use the function `display_in_repl`
 ```@docs; canonical=false
 display_in_repl
 ```
+
+```@bibliography
+Pages = ["index.md"]
+Canonical = false
+```
+
+
