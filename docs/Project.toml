@@ -1,9 +1,21 @@
 [deps]
 Catlab = "134e5e36-593f-5add-ad60-77f754baafbe"
 Documenter = "e30172f5-a6a5-5a46-863b-614d45cd2de4"
+DocumenterCitations = "daee34ce-89f3-4625-b898-19384cb65244"
 DocumenterVitepress = "4710194d-e776-4893-9690-8d956a29c365"
 HypertextLiteral = "ac1192a8-f4b3-4bfe-ba22-af5b92cd3ab2"
 ImageIO = "82e4d734-157c-48bb-816b-45c225c6df19"
 LiveServer = "16fef848-5104-11e9-1b77-fb7a48bbb589"
 Sixel = "45858cf5-a6b0-47a3-bbea-62219f50df47"
 TemporalSheaves = "18b264b9-e8a0-44aa-a543-ac2aaf56de86"
+
+[compat]
+Catlab = "0.17"
+Documenter = "1.16"
+DocumenterCitations = "1.4"
+DocumenterVitepress = "0.3"
+HypertextLiteral = "1"
+ImageIO = "0.6.9"
+LiveServer = "1.5"
+Sixel = "0.1.5"
+julia = "1.10"
